@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_home_assignment/widgets/borderedText.dart';
 
@@ -41,7 +40,10 @@ class QuestionsAppBar extends StatelessWidget implements PreferredSizeWidget {
                       )),
                   Text(
                     "100",
-                    style: TextStyle(color: Colors.grey[700]),
+                    style: TextStyle(
+                        color: Colors.grey[700],
+                        fontWeight: FontWeight.w800,
+                        fontSize: 16),
                   )
                 ],
               ),
@@ -50,35 +52,49 @@ class QuestionsAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Row(
-            children: [
-              Expanded(
-                // current question
-                flex: 5,
-                child: Container(
-                  height: 6,
-                  color: Colors.red,
-                ),
-              ),
-              Expanded(
-                  // questions remaining
-                  flex: 10,
-                  child: Container(
-                    color: Colors.grey[300],
-                    height: 6,
-                  ))
-            ],
-          ),
+          child: TimerWidget(),
         ),
         Container(
             color: Colors.grey[200],
             padding: EdgeInsets.all(8),
             child: const BorderedText(
               text: "Question 3",
-              borderWidth: 3.5,
+              borderWidth: 3,
               letterSpacing: 2,
             ))
       ],
+    );
+  }
+}
+
+class TimerWidget extends StatelessWidget {
+  const TimerWidget({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRRect(
+      borderRadius: const BorderRadius.all(Radius.circular(10)),
+      child: Row(
+        children: [
+          Expanded(
+            // current question
+            flex: 5,
+            child: Container(
+              height: 6,
+              color: Colors.green[300],
+            ),
+          ),
+          Expanded(
+              // questions remaining
+              flex: 10,
+              child: Container(
+                color: Colors.grey[300],
+                height: 6,
+              ))
+        ],
+      ),
     );
   }
 }
