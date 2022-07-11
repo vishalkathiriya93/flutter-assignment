@@ -1,41 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_home_assignment/modules/questions/enums/question_screen_state.dart';
 import 'package:flutter_home_assignment/modules/questions/models/question.dart';
 import 'package:flutter_home_assignment/providers/questions.dart';
 
 class QuestionsProvider extends ChangeNotifier {
   List<Question> _questionList = [];
-  Question? _currentQuestion;
   int _currentQuestionIndex = 0;
-
-  Question? get currentQuestion => _currentQuestion;
-
-  set currentQuestion(Question? value) {
-    _currentQuestion = value;
-    notifyListeners();
-  }
-
-  int get currentQuestionIndex => _currentQuestionIndex;
-
-  set currentQuestionIndex(int value) {
-    _currentQuestionIndex = value;
-    notifyListeners();
-  }
+  String _choice = "";
+  QuestionState _questionState = QuestionState.initial;
 
   List<Question> get questionList => _questionList;
+  int get currentQuestionIndex => _currentQuestionIndex;
+  String get choice => _choice;
+  QuestionState get questionState => _questionState;
 
   set questionList(List<Question> value) {
     _questionList = value;
     notifyListeners();
   }
 
-  getQuestions() {
+  set currentQuestionIndex(int value) {
+    _currentQuestionIndex = value;
+    notifyListeners();
+  }
+
+  set questionState(QuestionState value) {
+    _questionState = value;
+    notifyListeners();
+  }
+
+  void makeChoice(
+    String userChoice,
+  ) {
+    _choice = userChoice;
+    questionState = QuestionState.chosen;
+  }
+
+  bool goToNextQuestion() {
+    if (currentQuestionIndex==questionList.length-1) {
+      return false;
+    }
+    questionState = QuestionState.initial;
+    currentQuestionIndex++;
+    return true;
+  }
+
+  void getQuestions() {
     _questionList.clear();
-    QuestionsData.questions.forEach((element) {
+    for (Map<String, dynamic> element in QuestionsData.questions) {
       _questionList.add(Question(
           correctAnswer: element["correct"],
           incorrectAnswers: element["incorrect"],
           text: element["text"]));
-    });
-    _currentQuestion= questionList[0];
+    }
   }
 }

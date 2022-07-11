@@ -1,0 +1,3 @@
+enum QuestionState{
+  initial, chosen
+}
