@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_home_assignment/modules/questions/providers/questions_provider.dart';
 import 'package:flutter_home_assignment/modules/questions/widgets/dialogs/quiting_dialog.dart';
+import 'package:flutter_home_assignment/modules/questions/widgets/timer.dart';
 import 'package:flutter_home_assignment/widgets/borderedText.dart';
 import 'package:provider/provider.dart';
 
@@ -54,7 +55,7 @@ class QuestionsAppBar extends StatelessWidget implements PreferredSizeWidget {
           ],
         ),
         const Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          padding: EdgeInsets.symmetric(horizontal: 8.0),
           child: TimerWidget(),
         ),
         Container(
@@ -67,36 +68,6 @@ class QuestionsAppBar extends StatelessWidget implements PreferredSizeWidget {
               letterSpacing: 2,
             ))
       ],
-    );
-  }
-}
-
-class TimerWidget extends StatelessWidget {
-  const TimerWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: const BorderRadius.all(Radius.circular(10)),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 5,
-            child: Container(
-              height: 6,
-              color: Colors.green[300],
-            ),
-          ),
-          Expanded(
-              flex: 10,
-              child: Container(
-                color: Colors.grey[300],
-                height: 6,
-              ))
-        ],
-      ),
     );
   }
 }
