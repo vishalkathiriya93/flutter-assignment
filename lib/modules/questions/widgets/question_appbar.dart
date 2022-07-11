@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_home_assignment/modules/questions/providers/questions_provider.dart';
+import 'package:flutter_home_assignment/modules/questions/widgets/dialogs/quiting_dialog.dart';
 import 'package:flutter_home_assignment/widgets/borderedText.dart';
+import 'package:provider/provider.dart';
 
 class QuestionsAppBar extends StatelessWidget implements PreferredSizeWidget {
   const QuestionsAppBar({
@@ -20,12 +23,12 @@ class QuestionsAppBar extends StatelessWidget implements PreferredSizeWidget {
           leading: Padding(
             padding: const EdgeInsets.only(left: 16.0),
             child: IconButton(
-              icon: Icon(
-                Icons.close,
-                color: Colors.grey[700],
-              ),
-              onPressed: () {},
-            ),
+                icon: Icon(
+                  Icons.close,
+                  color: Colors.grey[700],
+                ),
+                onPressed: () => showDialog(
+                    context: context, builder: (_) => const QuittingDialog())),
           ),
           actions: [
             Padding(
@@ -50,15 +53,16 @@ class QuestionsAppBar extends StatelessWidget implements PreferredSizeWidget {
             )
           ],
         ),
-        Padding(
+        const Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: TimerWidget(),
         ),
         Container(
             color: Colors.grey[200],
             padding: EdgeInsets.all(8),
-            child: const BorderedText(
-              text: "Question 3",
+            child: BorderedText(
+              text:
+                  "Question ${context.read<QuestionsProvider>().currentQuestionIndex + 1}",
               borderWidth: 3,
               letterSpacing: 2,
             ))
@@ -79,7 +83,6 @@ class TimerWidget extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            // current question
             flex: 5,
             child: Container(
               height: 6,
@@ -87,7 +90,6 @@ class TimerWidget extends StatelessWidget {
             ),
           ),
           Expanded(
-              // questions remaining
               flex: 10,
               child: Container(
                 color: Colors.grey[300],
