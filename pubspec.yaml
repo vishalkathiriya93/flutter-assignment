@@ -15,7 +15,6 @@ dependencies:
     sdk: flutter
   cupertino_icons: ^1.0.2
   get: ^4.6.5
-  google_fonts: ^3.0.1
   syncfusion_flutter_gauges: ^20.2.36
 
 dev_dependencies:

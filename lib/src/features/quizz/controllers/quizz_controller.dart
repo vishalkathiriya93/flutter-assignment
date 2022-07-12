@@ -8,8 +8,9 @@ import 'package:get/get.dart';
 class QuizzController extends GetxController {
   var _questionIndex = 0.obs;
   final _totalScore = 0.obs;
-  final _seconds = 5.0.obs;
+  final _seconds = 10.0.obs;
   late Timer timer;
+
   final _questionsList = <QuestionModel>[
     QuestionModel(
       question: 'What is one potential environmental concern about Web 3.0?',
@@ -108,9 +109,9 @@ class QuizzController extends GetxController {
     log('Current questionIndex: ${_questionIndex.value}');
   }
 
-  resetTimer() => _seconds.value = 5;
+  resetTimer() => _seconds.value = 10;
 
-  stopTimer() => timer.cancel();
+  stopTimer() => {timer.cancel()};
 
   startTimer() {
     resetTimer();

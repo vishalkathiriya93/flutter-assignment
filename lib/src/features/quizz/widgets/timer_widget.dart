@@ -13,7 +13,7 @@ class TimerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SfLinearGauge(
       minimum: 0.0,
-      maximum: 5,
+      maximum: 10,
       orientation: LinearGaugeOrientation.horizontal,
       majorTickStyle: const LinearTickStyle(length: 20),
       showLabels: false,

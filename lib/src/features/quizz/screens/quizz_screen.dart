@@ -45,7 +45,9 @@ class QuizzScreen extends GetWidget<QuizzController> {
                     ? const SizedBox.shrink()
                     : Column(
                         children: [
-                          TimerWidget(seconds: controller.seconds),
+                          TimerWidget(
+                            seconds: controller.seconds,
+                          ),
                           QuestionCountWidget(controller: controller),
                         ],
                       ),
