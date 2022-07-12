@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       initialBinding: QuizzBindings(),
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Quizz App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
